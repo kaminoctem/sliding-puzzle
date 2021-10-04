@@ -2,14 +2,20 @@ import "../node_modules/spectre.css/dist/spectre.min.css";
 import "../node_modules/spectre.css/dist/spectre-exp.min.css";
 import "../node_modules/spectre.css/dist/spectre-icons.min.css";
 import "./App.css";
+
 import React, { useEffect, useState } from "react";
+
 import SlidingPuzzleGame from "./phaser/SlidingPuzzleGame";
 
-function App() {
-  const [state, setState] = useState<SlidingPuzzleGame>();
+interface State {
+  game: SlidingPuzzleGame;
+}
+
+function App(): JSX.Element {
+  const [state, setState] = useState<State>();
   useEffect(() => {
     const game = new SlidingPuzzleGame();
-    setState(game);
+    setState({...state, game: game});
   }, []);
 
   return (

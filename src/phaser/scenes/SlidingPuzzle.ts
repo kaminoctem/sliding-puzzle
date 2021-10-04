@@ -1,11 +1,11 @@
+import Button from "../components/Button";
+import MessageBox from "../components/MessageBox";
 import Phaser from "phaser";
+import Piece from "../models/Piece";
 import SceneKey from "../SceneKey";
 import SlidingPuzzleBackground1 from "../assets/images/sliding-puzzle-background-1.png";
 import SlidingPuzzleBackground2 from "../assets/images/sliding-puzzle-background-2.png";
 import SlidingPuzzleBackground3 from "../assets/images/sliding-puzzle-background-3.png";
-import Button from "../components/Button";
-import Piece from "../models/Piece";
-import MessageBox from "../components/MessageBox";
 
 const spritesheetKey1 = "background1";
 const spritesheetKey2 = "background2";
@@ -19,7 +19,6 @@ const slidingPuzzleBackgroundConfig: Phaser.Types.Loader.FileTypes.ImageFrameCon
   };
 
 const textStyle: Phaser.Types.GameObjects.Text.TextStyle = {
-  fontFamily: "New Tegomin",
   fontSize: "32px",
   color: "#5755d9",
 };
@@ -407,7 +406,7 @@ export default class SlidingPuzzle extends Phaser.Scene {
       ? slidingPuzzleBackgroundConfig.frameHeight
       : 0;
 
-    const pieceTween = this.tweens.add({
+    this.tweens.add({
       targets: piece,
       x: piece.currentPositionX * frameWidth + frameWidth / 2,
       y: piece.currentPositionY * frameHeight + frameHeight / 2,
@@ -415,7 +414,7 @@ export default class SlidingPuzzle extends Phaser.Scene {
       ease: Phaser.Math.Easing.Linear(0),
     });
 
-    const blankTween = this.tweens.add({
+    this.tweens.add({
       targets: blank,
       x: blank.currentPositionX * frameWidth + frameWidth / 2,
       y: blank.currentPositionY * frameHeight + frameHeight / 2,
