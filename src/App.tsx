@@ -15,14 +15,17 @@ function App(): JSX.Element {
   const [state, setState] = useState<State>();
   useEffect(() => {
     const game = new SlidingPuzzleGame();
-    setState({...state, game: game});
-  }, []);
+    setState({ ...state, game: game });
+  }, [state]);
 
   return (
     <div className="App">
       <header className="navbar">
         <section className="navbar-section">
-          <a className="navbar-brand mr-2">
+          <a
+            className="navbar-brand mr-2"
+            href="https://github.com/kaminoctem/sliding-puzzle"
+          >
             Sliding Puzzle
           </a>
           <a
