@@ -8,15 +8,18 @@ import React, { useEffect, useState } from "react";
 import SlidingPuzzleGame from "./phaser/SlidingPuzzleGame";
 
 interface State {
-  game: SlidingPuzzleGame;
+  game?: SlidingPuzzleGame | undefined;
 }
 
 function App(): JSX.Element {
-  const [state, setState] = useState<State>();
+  const [state, setState] = useState<State>({
+    game: undefined
+  });
   useEffect(() => {
     const game = new SlidingPuzzleGame();
     setState({ ...state, game: game });
-  }, [state]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="App">
